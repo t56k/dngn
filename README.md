@@ -1,3 +1,7 @@
 # dngn
 
-Hands-on Rust 2021
+## Running
+
+```
+cargo run
+```
