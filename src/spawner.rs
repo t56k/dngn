@@ -12,8 +12,8 @@ pub fn spawn_player(
                 glyph: to_cp437('@'),
             },
             Health {
-                current: 20,
-                max: 20,
+                current: 10,
+                max: 10,
             },
         )
     );
