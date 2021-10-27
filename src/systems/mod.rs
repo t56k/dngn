@@ -11,6 +11,7 @@ mod tooltips;
 mod combat;
 mod chasing;
 mod fov;
+mod use_items;
 
 pub fn build_input_scheduler() -> Schedule {
     Schedule::builder()
