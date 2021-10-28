@@ -33,8 +33,18 @@ pub fn player_input(
                     .for_each(|(entity, _item, _item_pos)| {
                         commands.remove_component::<Point>(*entity);
                         commands.add_component(*entity, Carried(player));
-                    }
-                    );
+
+                        if let Ok(e) = ecs.entry_ref(*entity) {
+                            if e.get_component::<Weapon>().is_ok() {
+                                <(Entity, &Carried, &Weapon)>::query()
+                                    .iter(ecs)
+                                    .filter(|(_, c, _)| c.0 == player)
+                                    .for_each(|(e, _, _)| {
+                                        commands.remove(*e);
+                                    })
+                            }
+                        }
+                });
                 Point::new(0, 0)
             },
             VirtualKeyCode::Key1 => use_item(0, ecs, commands),
